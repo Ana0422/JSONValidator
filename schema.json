@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "home_phone": {
+            "type": "string"
+        },
+        "cell_phone": {
+            "type": "string"
+        },
+        "work_phone": {
+            "type": "string"
+        },
+        "birth_date": {
+            "type": "string"
+        },
+        "govt_id_number": {
+            "type": "string"
+        },
+        "day": {
+            "type": "string",
+            "enum": [
+                "SU",
+                "MO",
+                "TU",
+                "WE",
+                "TH",
+                "FR",
+                "SA"
+            ]
+        }
+    },
+    "required": [
+        "id",
+        "name"
+    ],
+    "anyOf": [
+        {
+            "required": [
+                "home_phone"
+            ]
+        },
+        {
+            "required": [
+                "cell_phone"
+            ]
+        },
+        {
+            "required": [
+                "work_phone"
+            ]
+        }
+    ],
+    "oneOf": [
+        {
+            "required": [
+                "birth_date"
+            ]
+        },
+        {
+            "required": [
+                "govt_id_number"
+            ]
+        }
+    ],
+    "not": {
+        "required": [
+            "birth_date",
+            "govt_id_number"
+        ]
+    }
+}
